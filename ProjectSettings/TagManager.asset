@@ -6,6 +6,9 @@ TagManager:
   tags:
   - PowerUP
   - obs1
+  - Bullet
+  - Undefined
+  - LAVA
   layers:
   - Default
   - TransparentFX

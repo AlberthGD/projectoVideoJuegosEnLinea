@@ -5,6 +5,9 @@ using System.Collections;
 public class AmbientSound : MonoBehaviour
 {
     public AudioClip[] ambientClips;
+    public AudioClip lavaSound;
+    public AudioClip bubbleSound;
+
 
     public float minWaitTime = 5f;
     public float maxWaitTime = 15f;
@@ -16,6 +19,22 @@ public class AmbientSound : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
 
         StartCoroutine(PlayRandomSounds());
+
+        audioSource.clip = lavaSound;
+        audioSource.loop = true;
+        audioSource.Play();
+        audioSource.volume = 0.25f;
+
+        audioSource.clip = bubbleSound;
+        audioSource.loop = true;
+        audioSource.Play();
+        audioSource.volume = 0.25f;
+
+    }
+
+    private void Update()
+    {
+        
     }
 
     IEnumerator PlayRandomSounds()

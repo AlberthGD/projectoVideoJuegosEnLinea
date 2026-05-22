@@ -192,6 +192,12 @@ public class PlayerMovement : MonoBehaviourPun, IPunObservable
             Debug.Log("Golpeado por un obstáculo");
         }
 
+        if (collision.gameObject.CompareTag("LAVA"))
+        {
+            TakeHit();
+            Debug.Log("Golpeado por LAVA");
+        }
+
     }
 
     void Update()

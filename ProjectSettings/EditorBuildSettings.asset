@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Nivel_Arbol.unity
     guid: 2bcb381f91c6b4fa8a3be8b247bf3f8f
+  - enabled: 1
+    path: Assets/Scenes/Nivel_Volcan.unity
+    guid: fb5abfc1bc764f24f9cbb38b215e58e0
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

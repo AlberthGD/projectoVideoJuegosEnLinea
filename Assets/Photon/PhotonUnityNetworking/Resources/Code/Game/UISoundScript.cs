@@ -7,6 +7,7 @@ public class UISoundScript : MonoBehaviour
     public static UISoundScript instance;
 
     public AudioClip buttonClickSound;
+    public AudioClip HitSoudn;
 
     private AudioSource audioSource;
 
