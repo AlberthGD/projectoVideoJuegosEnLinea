@@ -13,11 +13,14 @@ public class PlayerStats : MonoBehaviourPun
     
     private Color originalScoreColor;
     private Coroutine rutinaScoreFlash;
+    
+    [HideInInspector] public bool multiplicadorActivo = false; 
 
-    [Header("Efecto de Daño al Personaje")]
+    [Header("Efecto Visual (Daño y PowerUp)")]
     public Renderer[] playerRenderers; 
     public Material materialDeDano; 
-    
+    public Material materialMultiplicador; 
+
     private Material[][] originalMaterials; 
     private Coroutine rutinaDeDano; 
 
@@ -78,6 +81,8 @@ public class PlayerStats : MonoBehaviourPun
     {
         if (!photonView.IsMine) return;
         
+        if (multiplicadorActivo) points *= 2; 
+        
         score += points;
         UpdateScoreUI(); 
         UpdateNetworkScore();
@@ -86,6 +91,12 @@ public class PlayerStats : MonoBehaviourPun
     public void TakeDamage(int penalty)
     {
         if (!photonView.IsMine) return;
+
+        PlayerInventory miInventario = GetComponent<PlayerInventory>();
+        if (miInventario != null && miInventario.tieneEscudoActivo)
+        {
+            return; 
+        }
 
         score -= penalty;
         if (score < 0) score = 0; 
@@ -96,11 +107,32 @@ public class PlayerStats : MonoBehaviourPun
         if (rutinaScoreFlash != null)
         {
             StopCoroutine(rutinaScoreFlash);
-            if (scoreText != null) scoreText.color = originalScoreColor; 
+            if (scoreText != null) scoreText.color = multiplicadorActivo ? Color.blue : originalScoreColor; 
         }
         rutinaScoreFlash = StartCoroutine(RutinaFlashPuntaje());
 
         photonView.RPC("ActivarColorRojoRPC", RpcTarget.All);
+    }
+
+    public void IniciarEfectoMultiplicador(float duracion)
+    {
+        if (!photonView.IsMine) return;
+        StartCoroutine(RutinaColorAzulMultiplicador(duracion));
+    }
+
+    private IEnumerator RutinaColorAzulMultiplicador(float duracion)
+    {
+        multiplicadorActivo = true;
+        if (scoreText != null) scoreText.color = Color.blue;
+        
+        photonView.RPC("RPC_ToggleColorAzul", RpcTarget.All, true);
+
+        yield return new WaitForSeconds(duracion);
+        
+        multiplicadorActivo = false;
+        if (scoreText != null) scoreText.color = originalScoreColor;
+
+        photonView.RPC("RPC_ToggleColorAzul", RpcTarget.All, false);
     }
 
     private void UpdateScoreUI()
@@ -116,10 +148,8 @@ public class PlayerStats : MonoBehaviourPun
         if (scoreText != null)
         {
             scoreText.color = Color.red;
-            
             yield return new WaitForSeconds(0.3f);
-            
-            scoreText.color = originalScoreColor;
+            scoreText.color = multiplicadorActivo ? Color.blue : originalScoreColor;
         }
         rutinaScoreFlash = null;
     }
@@ -129,6 +159,25 @@ public class PlayerStats : MonoBehaviourPun
         ExitGames.Client.Photon.Hashtable hash = new ExitGames.Client.Photon.Hashtable();
         hash.Add("Score", score);
         PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
+    }
+
+    [PunRPC]
+    public void RPC_ToggleColorAzul(bool estado)
+    {
+        if (rutinaDeDano != null)
+        {
+            StopCoroutine(rutinaDeDano);
+            rutinaDeDano = null;
+        }
+
+        if (estado)
+        {
+            AplicarMaterial(materialMultiplicador);
+        }
+        else
+        {
+            RestaurarMaterialOriginal();
+        }
     }
 
     [PunRPC]
@@ -151,30 +200,32 @@ public class PlayerStats : MonoBehaviourPun
 
         for (int i = 0; i < cantidadParpadeos; i++)
         {
-            AplicarMaterialDano();
+            AplicarMaterial(materialDeDano); 
             yield return new WaitForSeconds(tiempoRojo);
 
-            RestaurarMaterialOriginal();
+            if (multiplicadorActivo) AplicarMaterial(materialMultiplicador);
+            else RestaurarMaterialOriginal();
+            
             yield return new WaitForSeconds(tiempoNormal);
         }
 
         rutinaDeDano = null; 
     }
 
-    private void AplicarMaterialDano()
+    private void AplicarMaterial(Material nuevoMat)
     {
-        if (materialDeDano != null)
+        if (nuevoMat != null)
         {
             for (int i = 0; i < playerRenderers.Length; i++)
             {
                 if (playerRenderers[i] != null)
                 {
-                    Material[] damageMats = new Material[playerRenderers[i].materials.Length];
-                    for(int j = 0; j < damageMats.Length; j++) 
+                    Material[] nuevosMats = new Material[playerRenderers[i].materials.Length];
+                    for(int j = 0; j < nuevosMats.Length; j++) 
                     {
-                        damageMats[j] = materialDeDano;
+                        nuevosMats[j] = nuevoMat;
                     }
-                    playerRenderers[i].materials = damageMats;
+                    playerRenderers[i].materials = nuevosMats;
                 }
             }
         }

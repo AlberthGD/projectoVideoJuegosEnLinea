@@ -127,6 +127,10 @@ public class PlayerMovement : MonoBehaviourPun, IPunObservable
                 linkRb.mass = 1f; 
                 linkRb.linearDamping = 0.5f; 
                 linkRb.angularDamping = 15f; 
+                
+                // Esto es lo que realmente evita el "helicóptero" sin romper las físicas
+                linkRb.maxAngularVelocity = 10f; 
+
                 linkRb.constraints = RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY;
 
                 HingeJoint hinge = link.AddComponent<HingeJoint>();
@@ -135,12 +139,14 @@ public class PlayerMovement : MonoBehaviourPun, IPunObservable
                 hinge.anchor = new Vector3(0, 1f, 0); 
                 hinge.connectedAnchor = new Vector3(0, -1f, 0); 
 
+                // Solo le ponemos límite estricto al eslabón superior
                 if (i == 0) 
                 {
                     hinge.useLimits = true;
                     JointLimits limits = hinge.limits;
                     limits.min = -maxSwingAngle; 
                     limits.max = maxSwingAngle;  
+                    limits.bounciness = 0.2f; 
                     hinge.limits = limits;
                 }
             }
@@ -188,6 +194,14 @@ public class PlayerMovement : MonoBehaviourPun, IPunObservable
 
         if (collision.gameObject.CompareTag("obs1"))
         {
+            PlayerInventory miInventario = GetComponent<PlayerInventory>();
+            
+            if (miInventario != null && miInventario.tieneEscudoActivo)
+            {
+                Debug.Log("¡Golpe bloqueado por el escudo!");
+                return; 
+            }
+
             TakeHit();
             Debug.Log("Golpeado por un obstáculo");
         }
@@ -235,9 +249,9 @@ public class PlayerMovement : MonoBehaviourPun, IPunObservable
                 {
                     canClimb = true;
                     hitCount = 0; 
+                    if (anim != null) anim.SetBool("cayendo", false); 
                 }
 
-                return; 
             }
             else
             {
@@ -335,7 +349,8 @@ public class PlayerMovement : MonoBehaviourPun, IPunObservable
             if (horizontalInput > 0) horizontalInput = 0; 
             if (targetRb.linearVelocity.x > 0)
             {
-                targetRb.linearVelocity = new Vector3(-wallBounceForce, targetRb.linearVelocity.y, targetRb.linearVelocity.z);
+                targetRb.linearVelocity = new Vector3(0, targetRb.linearVelocity.y, targetRb.linearVelocity.z);
+                targetRb.AddForce(Vector3.left * wallBounceForce, ForceMode.VelocityChange);
                 rightCooldownTimer = bounceCooldown; 
             }
         }
@@ -344,7 +359,8 @@ public class PlayerMovement : MonoBehaviourPun, IPunObservable
             if (horizontalInput < 0) horizontalInput = 0; 
             if (targetRb.linearVelocity.x < 0)
             {
-                targetRb.linearVelocity = new Vector3(wallBounceForce, targetRb.linearVelocity.y, targetRb.linearVelocity.z);
+                targetRb.linearVelocity = new Vector3(0, targetRb.linearVelocity.y, targetRb.linearVelocity.z);
+                targetRb.AddForce(Vector3.right * wallBounceForce, ForceMode.VelocityChange);
                 leftCooldownTimer = bounceCooldown; 
             }
         }

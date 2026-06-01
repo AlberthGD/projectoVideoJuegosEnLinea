@@ -339,7 +339,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1902450165}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -6781,8 +6781,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a079456a4a524a5ab877c1b39835ee2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LobbyManager
-  modoPruebaRapida: 1
-  nombreEscenaJuego: Nivel_Volcan
+  modoPruebaRapida: 0
+  nombreEscenaJuego: Nivel_Arbol
   lobbyPanel: {fileID: 1790573380}
   roomPanel: {fileID: 1250917461}
   statusText: {fileID: 603966738}

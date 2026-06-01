@@ -48,6 +48,8 @@ MonoBehaviour:
   - RPC_JugadorLlego
   - RPC_JugadorLlegoPantallaDividida
   - DestruirItemRPC
+  - RPC_ToggleEscudo
+  - RPC_ToggleColorAzul
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
