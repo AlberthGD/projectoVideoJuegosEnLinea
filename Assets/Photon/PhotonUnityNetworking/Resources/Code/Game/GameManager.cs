@@ -1,7 +1,8 @@
 using UnityEngine;
 using Photon.Pun;
+using UnityEngine.SceneManagement; 
 
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviourPunCallbacks 
 {
     [Header("Spawn")]
     public Transform spawnPointJ1; 
@@ -10,11 +11,31 @@ public class GameManager : MonoBehaviour
     [Header("PrefabsCharacters")]
     public string[] playerPrefabNames;
 
+    [Header("Menú de Pausa / Salida")]
+    public GameObject pausePanel; 
+    public string nombreEscenaLobby = "Lobby"; 
+
     void Start()
     {
+        if (pausePanel != null)
+        {
+            pausePanel.SetActive(false);
+        }
+
         if (PhotonNetwork.IsConnected)
         {
             SpawnPlayer();
+        }
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (pausePanel != null)
+            {
+                pausePanel.SetActive(!pausePanel.activeSelf);
+            }
         }
     }
 
@@ -51,6 +72,23 @@ public class GameManager : MonoBehaviour
 
         camJ1.gameObject.SetActive(true);
         camJ2.gameObject.SetActive(true);
+    }
 
+    
+    public void BotonSalirPartida()
+    {
+        if (PhotonNetwork.InRoom)
+        {
+            PhotonNetwork.LeaveRoom(); 
+        }
+        else
+        {
+            SceneManager.LoadScene(nombreEscenaLobby);
+        }
+    }
+
+    public override void OnLeftRoom()
+    {
+        SceneManager.LoadScene(nombreEscenaLobby);
     }
 }

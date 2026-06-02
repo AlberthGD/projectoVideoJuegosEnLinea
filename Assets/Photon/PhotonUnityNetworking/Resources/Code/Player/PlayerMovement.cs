@@ -32,7 +32,7 @@ public class PlayerMovement : MonoBehaviourPun, IPunObservable
     public float linkLength = 1f;    
     public float ropeWidth = 0.15f; 
     public Material ropeMaterial;    
-    public Vector3 holdOffset = new Vector3(0, -1, -0.3f); 
+    public Transform puntoDeAgarreHand;
 
     [Header("Transición Elevador")]
     public float distanciaEscaladaFisica = 3f; 
@@ -199,6 +199,7 @@ public class PlayerMovement : MonoBehaviourPun, IPunObservable
             if (miInventario != null && miInventario.tieneEscudoActivo)
             {
                 Debug.Log("¡Golpe bloqueado por el escudo!");
+                miInventario.RecibirGolpeEscudo();
                 return; 
             }
 
@@ -276,7 +277,7 @@ public class PlayerMovement : MonoBehaviourPun, IPunObservable
 
         if (!photonView.IsMine)
         {
-            Vector3 handPos = transform.position - transform.TransformDirection(holdOffset);
+            Vector3 handPos = puntoDeAgarreHand.position;
             Vector3 ceilingPos = ropePivot.transform.position;
             
             if (lastHandPos == Vector3.zero) lastHandPos = handPos;
@@ -409,8 +410,9 @@ public class PlayerMovement : MonoBehaviourPun, IPunObservable
         Vector3 nextLinkPos = ropeLinks[index + 1].transform.position;
 
         Vector3 ropeCenter = Vector3.Lerp(currentLinkPos, nextLinkPos, t);
+        Vector3 offsetDinamico = transform.position - puntoDeAgarreHand.position;
         
-        transform.position = ropeCenter + transform.TransformDirection(holdOffset);
+        transform.position = ropeCenter + offsetDinamico;
         transform.rotation = ropeLinks[index].transform.rotation;
     }
 }

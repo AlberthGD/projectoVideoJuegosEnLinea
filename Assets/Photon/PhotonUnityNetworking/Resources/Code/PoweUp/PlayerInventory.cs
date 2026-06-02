@@ -25,6 +25,9 @@ public class PlayerInventory : MonoBehaviourPun
     private Image iconoUI; 
     private PlayerMovement miMovimiento;
 
+    private int golpesEscudo = 0;
+    private Coroutine rutinaEscudoActiva;
+
     void Start()
     {
         if (photonView.IsMine)
@@ -103,7 +106,8 @@ public class PlayerInventory : MonoBehaviourPun
         switch (item)
         {
             case TipoItem.Escudo:
-                StartCoroutine(RutinaEscudo());
+                if (rutinaEscudoActiva != null) StopCoroutine(rutinaEscudoActiva);
+                rutinaEscudoActiva = StartCoroutine(RutinaEscudo());
                 break;
             case TipoItem.Multiplicador:
                 StartCoroutine(RutinaMultiplicador());
@@ -121,13 +125,39 @@ public class PlayerInventory : MonoBehaviourPun
     {
         powerUpEnUso = true; 
         tieneEscudoActivo = true;
+        golpesEscudo = 0;
         photonView.RPC("RPC_ToggleEscudo", RpcTarget.All, true);
 
         yield return new WaitForSeconds(duracionPowerUp);
 
+        DesactivarEscudo();
+    }
+
+    public void RecibirGolpeEscudo()
+    {
+        if (!tieneEscudoActivo) return;
+
+        golpesEscudo++;
+        Debug.Log("Escudo dañado. Golpes recibidos: " + golpesEscudo + "/3");
+
+        if (golpesEscudo >= 3)
+        {
+            Debug.Log("¡El escudo se rompió por exceso de daño!");
+            
+            if (rutinaEscudoActiva != null)
+            {
+                StopCoroutine(rutinaEscudoActiva);
+            }
+            
+            DesactivarEscudo();
+        }
+    }
+
+    private void DesactivarEscudo()
+    {
         tieneEscudoActivo = false;
-        photonView.RPC("RPC_ToggleEscudo", RpcTarget.All, false);
         powerUpEnUso = false;
+        photonView.RPC("RPC_ToggleEscudo", RpcTarget.All, false);
     }
 
     [PunRPC]

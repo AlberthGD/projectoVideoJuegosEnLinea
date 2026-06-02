@@ -8,6 +8,10 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     [Header("Modo Desarrollo")]
     public bool modoPruebaRapida = false;
     public string nombreEscenaJuego = "GameScene";
+    
+    [Header("Selección de Personaje (Prueba)")]
+    [Tooltip("Índice del personaje (0, 1, 2...) que coincide con tu array en el GameManager.")]
+    public int avatarIndexPrueba = 0; 
 
     [Header("Elementos de la UI")]
     public GameObject lobbyPanel;
@@ -26,6 +30,10 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     {
         if (modoPruebaRapida)
         {
+            ExitGames.Client.Photon.Hashtable props = new ExitGames.Client.Photon.Hashtable();
+            props.Add("AvatarIndex", avatarIndexPrueba);
+            PhotonNetwork.LocalPlayer.SetCustomProperties(props);
+
             statusText.text = "Modo Prueba: Entrando directo...";
             RoomOptions opcionesTest = new RoomOptions { MaxPlayers = 1 };
             PhotonNetwork.JoinOrCreateRoom("SalaDeDesarrollo", opcionesTest, TypedLobby.Default);
@@ -65,7 +73,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         
         if (modoPruebaRapida || PhotonNetwork.CurrentRoom.MaxPlayers == 1)
         {
-            Debug.Log("¡Cargando la escena de juego automáticamente!");
+            Debug.Log("¡Cargando escena con el personaje índice: " + avatarIndexPrueba + "!");
             PhotonNetwork.LoadLevel(nombreEscenaJuego);
             return; 
         }
@@ -77,5 +85,27 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public override void OnJoinRoomFailed(short returnCode, string message)
     {
         statusText.text = "Error: Código incorrecto o sala llena.";
+    }
+
+    public void BotonSalirDeSala()
+    {
+        if (PhotonNetwork.InRoom)
+        {
+            statusText.text = "Saliendo de la sala...";
+            PhotonNetwork.LeaveRoom();
+        }
+    }
+
+    public override void OnLeftRoom()
+    {
+        statusText.text = "Has salido de la sala. Elige una opción.";
+        
+        roomPanel.SetActive(false);
+        lobbyPanel.SetActive(true);
+        
+        if (codeInputField != null)
+        {
+            codeInputField.text = "";
+        }
     }
 }
