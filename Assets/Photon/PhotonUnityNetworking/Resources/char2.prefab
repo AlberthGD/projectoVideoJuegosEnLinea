@@ -1365,8 +1365,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6638512295902387473}
-  - component: {fileID: 774785257847048043}
-  - component: {fileID: 7584986838846445785}
   - component: {fileID: 2327167844663774029}
   m_Layer: 0
   m_Name: char2
@@ -1392,60 +1390,6 @@ Transform:
   - {fileID: 1184702950377618821}
   m_Father: {fileID: 4631996151799173378}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &774785257847048043
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6299246625489635243}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 5bca97b6435524bf68fee486b4d2718f, type: 3}
-  m_Controller: {fileID: 9100000, guid: 252c8a5c19188400395ef73bdeecbbbb, type: 2}
-  m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
---- !u!114 &7584986838846445785
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6299246625489635243}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: PhotonUnityNetworking::Photon.Pun.PhotonAnimatorView
-  ShowLayerWeightsInspector: 1
-  ShowParameterInspector: 1
-  m_SynchronizeParameters:
-  - Type: 1
-    SynchronizeType: 0
-    Name: velocidadAnim
-  - Type: 9
-    SynchronizeType: 0
-    Name: PunchRight
-  - Type: 9
-    SynchronizeType: 0
-    Name: PunchLeft
-  - Type: 4
-    SynchronizeType: 0
-    Name: cayendo
-  m_SynchronizeLayers:
-  - SynchronizeType: 0
-    LayerIndex: 0
-  - SynchronizeType: 0
-    LayerIndex: 1
 --- !u!136 &2327167844663774029
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1617,6 +1561,8 @@ GameObject:
   - component: {fileID: 7431527429859677712}
   - component: {fileID: 7723074405405996431}
   - component: {fileID: 5649542285599302112}
+  - component: {fileID: 6580347688242493423}
+  - component: {fileID: 8552678719492844767}
   m_Layer: 0
   m_Name: char2
   m_TagString: Player
@@ -1662,6 +1608,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: -7954963479552284184}
   - {fileID: -1510780328707022753}
+  - {fileID: 8552678719492844767}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -1881,6 +1828,60 @@ MonoBehaviour:
   spawnHeightOffset: 15
   minSpawnTime: 5
   maxSpawnTime: 8
+--- !u!95 &6580347688242493423
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6845937071919552369}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 5bca97b6435524bf68fee486b4d2718f, type: 3}
+  m_Controller: {fileID: 9100000, guid: 252c8a5c19188400395ef73bdeecbbbb, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8552678719492844767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6845937071919552369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: PhotonUnityNetworking::Photon.Pun.PhotonAnimatorView
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters:
+  - Type: 1
+    SynchronizeType: 2
+    Name: velocidadAnim
+  - Type: 9
+    SynchronizeType: 1
+    Name: PunchRight
+  - Type: 9
+    SynchronizeType: 1
+    Name: PunchLeft
+  - Type: 4
+    SynchronizeType: 1
+    Name: cayendo
+  m_SynchronizeLayers:
+  - SynchronizeType: 0
+    LayerIndex: 0
+  - SynchronizeType: 0
+    LayerIndex: 1
 --- !u!1 &7004691145085227184
 GameObject:
   m_ObjectHideFlags: 0

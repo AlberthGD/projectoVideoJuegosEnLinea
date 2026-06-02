@@ -288,28 +288,56 @@ public class PlayerMovement : MonoBehaviourPun, IPunObservable
             float totalRopeLength = (linksCount - 1) * linkLength;
             float distFromTop = totalRopeLength - currentClimbOffset;
 
+            int activeLinks = Mathf.Max(1, Mathf.FloorToInt(distFromTop / linkLength));
+            int looseLinks = linksCount - activeLinks;
+
+            Vector3[] ropeNodes = new Vector3[linksCount + 1];
+            
+            Vector3 topP0 = ceilingPos;
+            Vector3 topP2 = handPos;
+            Vector3 topP1 = (topP0 + topP2) / 2f;
+            topP1.x -= smoothedVelX * 0.22f;
+            topP1.y -= 0.5f;
+
+            for(int i = 0; i <= activeLinks; i++)
+            {
+                float t = (float)i / activeLinks;
+                ropeNodes[i] = GetBezierPoint(topP0, topP1, topP2, t);
+            }
+            ropeNodes[activeLinks] = handPos; 
+            if (looseLinks > 0)
+            {
+                Vector3 tailStart = handPos;
+                Vector3 tailEnd = handPos + Vector3.down * (looseLinks * linkLength);
+                tailEnd.x -= smoothedVelX * 0.25f; 
+                
+                Vector3 tailControl = (tailStart + tailEnd) / 2f;
+                tailControl.x -= smoothedVelX * 0.15f; 
+
+                for(int i = 1; i <= looseLinks; i++)
+                {
+                    float t = (float)i / looseLinks;
+                    ropeNodes[activeLinks + i] = GetBezierPoint(tailStart, tailControl, tailEnd, t);
+                }
+            }
+
             for (int i = 0; i < ropeLinks.Count; i++)
             {
-                float linkDist = i * linkLength;
+                if (i >= ropeNodes.Length - 1) break;
 
-                if (linkDist <= distFromTop)
+                Vector3 startNode = ropeNodes[i];
+                Vector3 endNode = ropeNodes[i+1];
+                
+                ropeLinks[i].transform.position = (startNode + endNode) / 2f;
+                
+                Vector3 dir = endNode - startNode;
+                if (dir != Vector3.zero) 
                 {
-                    float t = (distFromTop > 0) ? (linkDist / distFromTop) : 0;
-                    Vector3 straightPos = Vector3.Lerp(ceilingPos, handPos, t);
-                    float curveAmount = Mathf.Sin(t * Mathf.PI) * smoothedVelX * 0.03f; 
-                    straightPos.x -= curveAmount;
-                    ropeLinks[i].transform.position = straightPos;
-                    if (i > 0) ropeLinks[i].transform.up = (ropeLinks[i].transform.position - ropeLinks[i-1].transform.position).normalized;
-                    else ropeLinks[i].transform.up = (handPos - ceilingPos).normalized;
+                    ropeLinks[i].transform.up = dir.normalized;
                 }
-                else
-                {
-                    float looseDist = linkDist - distFromTop;
-                    Vector3 loosePos = handPos + (Vector3.down * looseDist);
-                    loosePos.x -= smoothedVelX * 0.15f * looseDist; 
-                    ropeLinks[i].transform.position = loosePos;
-                    ropeLinks[i].transform.up = (ropeLinks[i].transform.position - ropeLinks[i-1].transform.position).normalized;
-                }
+
+                float dist = dir.magnitude;
+                ropeLinks[i].transform.localScale = new Vector3(ropeWidth, dist / 2f, ropeWidth);
             }
             return; 
         }
@@ -414,5 +442,16 @@ public class PlayerMovement : MonoBehaviourPun, IPunObservable
         
         transform.position = ropeCenter + offsetDinamico;
         transform.rotation = ropeLinks[index].transform.rotation;
+    }
+
+    Vector3 GetBezierPoint(Vector3 p0, Vector3 p1, Vector3 p2, float t) 
+    {
+        float u = 1f - t;
+        float tt = t * t;
+        float uu = u * u;
+        Vector3 p = uu * p0; 
+        p += 2f * u * t * p1; 
+        p += tt * p2; 
+        return p;
     }
 }
