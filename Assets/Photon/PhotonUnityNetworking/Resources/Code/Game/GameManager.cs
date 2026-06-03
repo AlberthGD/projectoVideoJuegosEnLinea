@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     void Start()
     {
+        PhotonNetwork.IsMessageQueueRunning = true;
+        
         if (pausePanel != null)
         {
             pausePanel.SetActive(false);

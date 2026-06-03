@@ -50,6 +50,15 @@ MonoBehaviour:
   - DestruirItemRPC
   - RPC_ToggleEscudo
   - RPC_ToggleColorAzul
+  - RPC_FinPorLava
+  - RPC_JugadorTermino
+  - DestruirMonedaEnRed
+  - RPC_ActualizarTemporizadorUI
+  - RPC_IniciarVotacion
+  - RPC_IrAVotacion
+  - RPC_MostrarBotones
+  - RPC_RegistrarVoto
+  - RPC_ForzarRecargaEscena
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

@@ -13,10 +13,7 @@ public class PlayerMovement : MonoBehaviourPun, IPunObservable
     public float initialBurstMultiplier = 3f; 
     public float maxSwingSpeed = 15f;
     public float velocidadCaida = 8f;
-    
-    
     public float resistenciaAlViento = 0.4f;
-
     private int hitCount = 0;
     private bool canClimb = true;
     private float disableTimer = 0f;
@@ -38,6 +35,9 @@ public class PlayerMovement : MonoBehaviourPun, IPunObservable
     public float distanciaEscaladaFisica = 3f; 
     
    public float totalClimbedDistance = 0f; 
+
+   [Header("Desarrollador")]
+    public bool modoDiosActivo = false;
 
     private List<Rigidbody> ropeLinks = new List<Rigidbody>();
     private float startX; 
@@ -191,6 +191,8 @@ public class PlayerMovement : MonoBehaviourPun, IPunObservable
     void OnTriggerEnter(Collider collision)
     {
         if (!photonView.IsMine) return;
+        
+        if (modoDiosActivo) return;
 
         if (collision.gameObject.CompareTag("obs1"))
         {
@@ -221,6 +223,14 @@ public class PlayerMovement : MonoBehaviourPun, IPunObservable
 
         if (photonView.IsMine)
         {
+            if ((Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)) && 
+                Input.GetKey(KeyCode.Alpha9) && 
+                Input.GetKeyDown(KeyCode.Alpha0))
+            {
+                modoDiosActivo = !modoDiosActivo;
+                Debug.Log("GOD MODE: " + (modoDiosActivo ? "ACTIVADO" : "DESACTIVADO"));
+            }
+
             if (isSlowed)
             {
                 slowTimer -= Time.deltaTime;

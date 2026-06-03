@@ -44,12 +44,4 @@ public class ObstacleCollision : MonoBehaviourPun
             PhotonNetwork.Destroy(gameObject);
         }
     }
-
-    void OnDestroy()
-    {
-        if (photonView.IsMine && !hasHitPlayer && !wasPunched && PlayerStats.LocalInstance != null)
-        {
-            PlayerStats.LocalInstance.AddScore(10);
-        }
-    }
 }

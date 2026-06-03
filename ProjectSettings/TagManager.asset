@@ -9,6 +9,7 @@ TagManager:
   - Bullet
   - Undefined
   - LAVA
+  - Arbol
   layers:
   - Default
   - TransparentFX

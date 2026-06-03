@@ -3106,6 +3106,7 @@ GameObject:
   - component: {fileID: 5649542285599302112}
   - component: {fileID: 5708216701590732803}
   - component: {fileID: 3809534716731397616}
+  - component: {fileID: -7119453415692137081}
   m_Layer: 0
   m_Name: char4
   m_TagString: Player
@@ -3185,6 +3186,7 @@ MonoBehaviour:
   puntoDeAgarreHand: {fileID: 7782828762829117739}
   distanciaEscaladaFisica: 3
   totalClimbedDistance: 0
+  modoDiosActivo: 0
 --- !u!54 &7537942723578078333
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3425,6 +3427,27 @@ MonoBehaviour:
     LayerIndex: 0
   - SynchronizeType: 0
     LayerIndex: 1
+--- !u!114 &-7119453415692137081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6845937071919552369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1cb78a369d214f09b6c972b9fb33dfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerCoinSpawner
+  prefabMonedaNombre: Coin
+  separacionVertical: 1.5
+  monedasPorLineaMin: 4
+  monedasPorLineaMax: 8
+  distanciaVisibilidadAdelanto: 25
+  laneOffsets:
+  - -2
+  - 0
+  - 2
 --- !u!1 &6852683281121081877
 GameObject:
   m_ObjectHideFlags: 0

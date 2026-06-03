@@ -3,9 +3,26 @@
 /[Oo]bj/
 /[Bb]uild/
 /[Bb]uilds/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
 *.app/
 *.app.zip
 Assets/AssetStoreTools*
-/Logs/
-/UserSettings/
 .DS_Store
+
+# Archivos de soluciones y proyectos autogenerados por editores (VS Code, Visual Studio, Rider)
+*.csproj
+*.sln
+*.suo
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.slnx
+.vs/
+.vscode/
+
+# Reportes de caídas y crashes de Unity
+mono_crash.*.json
+sysinfo.txt
+crash*
