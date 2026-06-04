@@ -19,9 +19,8 @@ public class PlayerBranchSpawner : MonoBehaviourPun
         public int side; 
         public GameObject activeInstance; 
         
-        // --- NUEVAS VARIABLES DE MEMORIA ---
-        public bool wasSpawned = false; // ¿Ya la dibujamos en la pantalla?
-        public bool isPermanentlyDestroyed = false; // ¿La rompió el jugador?
+        public bool wasSpawned = false; 
+        public bool isPermanentlyDestroyed = false; 
     }
 
     private List<BranchData> mapaDelArbol = new List<BranchData>();

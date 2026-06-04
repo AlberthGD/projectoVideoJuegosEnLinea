@@ -173,8 +173,9 @@ public class PlayerMovement : MonoBehaviourPun, IPunObservable
 
     void TakeHit()
     {
-        
-        climbSpeed = baseClimbSpeed * 0.25f; 
+
+        //Debug.Log("Golpe recibido");
+        climbSpeed = baseClimbSpeed * 0.60f; 
         isSlowed = true;
         slowTimer = 1f;
 
@@ -182,7 +183,7 @@ public class PlayerMovement : MonoBehaviourPun, IPunObservable
 
         Debug.Log("Hit! Count: " + hitCount);
 
-        if (hitCount >= 5)
+        if (hitCount >= 10)
         {
             DisableClimbing();
         }
@@ -194,7 +195,7 @@ public class PlayerMovement : MonoBehaviourPun, IPunObservable
         
         if (modoDiosActivo) return;
 
-        if (collision.gameObject.CompareTag("obs1"))
+        if (collision.gameObject.CompareTag("obs1") || collision.transform.root.CompareTag("obs1"))
         {
             PlayerInventory miInventario = GetComponent<PlayerInventory>();
             

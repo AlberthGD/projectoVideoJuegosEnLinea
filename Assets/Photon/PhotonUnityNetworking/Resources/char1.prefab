@@ -1847,6 +1847,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efbc0f403e5c649cc9cf0ee84bc0f37f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerObstacleSpawner
+  esPowerUp: 0
   obstacleArbolPrefabs:
   - ObstaculoFall
   obstacleLavaPrefabs:
@@ -1855,11 +1856,16 @@ MonoBehaviour:
   - -2
   - 0
   - 2
-  spawnHeightOffset: 15
+  spawnHeightOffset: 9
   minSpawnArbol: 2.5
   maxSpawnArbol: 4
-  minSpawnLava: 1.8
-  maxSpawnLava: 2.5
+  minSpawnLava: 0.5
+  maxSpawnLava: 2
+  uiWarnings:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  tiempoDeAdvertencia: 1.5
 --- !u!114 &3249777775433041387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1883,8 +1889,8 @@ MonoBehaviour:
   spawnXDistance: 4
   minSpawnArbol: 3
   maxSpawnArbol: 4.5
-  minSpawnLava: 2
-  maxSpawnLava: 3.5
+  minSpawnLava: 1.5
+  maxSpawnLava: 3
 --- !u!114 &6820152169861067956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1975,6 +1981,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efbc0f403e5c649cc9cf0ee84bc0f37f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerObstacleSpawner
+  esPowerUp: 1
   obstacleArbolPrefabs:
   - PowerUpShield
   - PowerUpx2Multi
@@ -1992,6 +1999,8 @@ MonoBehaviour:
   maxSpawnArbol: 8
   minSpawnLava: 6.5
   maxSpawnLava: 8
+  uiWarnings: []
+  tiempoDeAdvertencia: 1.5
 --- !u!95 &1720753479191861894
 Animator:
   serializedVersion: 7

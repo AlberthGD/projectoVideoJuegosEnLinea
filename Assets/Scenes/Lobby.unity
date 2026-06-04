@@ -6475,7 +6475,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LobbyManager
   modoPruebaRapida: 0
   nombreEscenaJuego: Nivel_Arbol
-  avatarIndexPrueba: 0
+  avatarIndexPrueba: 1
   lobbyPanel: {fileID: 1790573380}
   roomPanel: {fileID: 1250917461}
   statusText: {fileID: 603966738}
