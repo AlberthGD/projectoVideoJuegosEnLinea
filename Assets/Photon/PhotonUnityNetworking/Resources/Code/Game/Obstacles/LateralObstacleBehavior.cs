@@ -29,8 +29,8 @@ public class LateralObstacleBehavior : MonoBehaviourPun, IPunInstantiateMagicCal
         baseY = transform.position.y;
         spawnX = transform.position.x; 
 
-        if (direction == -1) transform.rotation = Quaternion.Euler(0, 0, -90); 
-        else transform.rotation = Quaternion.Euler(0, 0, 90);  
+        if (direction == -1) transform.rotation = Quaternion.Euler(0, -90, 0); 
+        else transform.rotation = Quaternion.Euler(0, 90, 0);  
     }
 
     void Update()

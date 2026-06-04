@@ -367,7 +367,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8777275953377669896
 Transform:
   m_ObjectHideFlags: 0
@@ -1847,15 +1847,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efbc0f403e5c649cc9cf0ee84bc0f37f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerObstacleSpawner
-  obstaclePrefabNames:
-  - Obs1
+  obstacleArbolPrefabs:
+  - ObstaculoFall
+  obstacleLavaPrefabs:
+  - EnemigoFall
   laneOffsets:
   - -2
   - 0
   - 2
   spawnHeightOffset: 15
-  minSpawnTime: 1
-  maxSpawnTime: 2.5
+  minSpawnArbol: 2.5
+  maxSpawnArbol: 4
+  minSpawnLava: 1.8
+  maxSpawnLava: 2.5
 --- !u!114 &3249777775433041387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1868,15 +1872,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74781a1241e0a4223aaa8983def99ebd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerLateralSpawner
-  flyingEnemyPrefabs:
-  - Enem1
+  prefabsArbolEnemigosFly:
+  - EnemigoLateral
+  prefabsLavaEnemigosFly:
+  - EnemigoVolcanLateral
   laneYOffsets:
   - 1
   - 3
   - 5
   spawnXDistance: 4
-  minSpawnTime: 1
-  maxSpawnTime: 2
+  minSpawnArbol: 3
+  maxSpawnArbol: 4.5
+  minSpawnLava: 2
+  maxSpawnLava: 3.5
 --- !u!114 &6820152169861067956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1967,17 +1975,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efbc0f403e5c649cc9cf0ee84bc0f37f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerObstacleSpawner
-  obstaclePrefabNames:
-  - projectile
+  obstacleArbolPrefabs:
   - PowerUpShield
   - PowerUpx2Multi
+  - projectile
+  obstacleLavaPrefabs:
+  - PowerUpShield
+  - PowerUpx2Multi
+  - projectile
   laneOffsets:
   - -2
   - 0
   - 2
   spawnHeightOffset: 15
-  minSpawnTime: 5
-  maxSpawnTime: 8
+  minSpawnArbol: 6.5
+  maxSpawnArbol: 8
+  minSpawnLava: 6.5
+  maxSpawnLava: 8
 --- !u!95 &1720753479191861894
 Animator:
   serializedVersion: 7
@@ -2078,7 +2092,7 @@ Transform:
   m_GameObject: {fileID: 6905266071592238105}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.3, z: 0.25}
+  m_LocalPosition: {x: 0, y: 1.3, z: 0.302}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

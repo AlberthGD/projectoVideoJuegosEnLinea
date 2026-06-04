@@ -2,19 +2,29 @@ using UnityEngine;
 using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement; 
 
 public class PlayerObstacleSpawner : MonoBehaviourPun
 {
     [Header("Configuración de Obstáculos")]
-    public string[] obstaclePrefabNames;
+    public string[] obstacleArbolPrefabs;
+    public string[] obstacleLavaPrefabs;
 
     [Header("Filas de Generación (Relativas al Jugador)")]
     public float[] laneOffsets = { -2f, 0f, 2f }; 
     public float spawnHeightOffset = 15f; 
 
-    [Header("Tiempos")]
-    public float minSpawnTime = 1f;
-    public float maxSpawnTime = 2.5f;
+    [Header("Tiempos - Nivel Árbol")]
+    public float minSpawnArbol = 2.5f;
+    public float maxSpawnArbol = 4f;
+
+    [Header("Tiempos - Nivel Lava")]
+    public float minSpawnLava = 1.8f;
+    public float maxSpawnLava = 2.5f;
+
+    private string[] prefabsActuales;
+    private float minSpawnTime;
+    private float maxSpawnTime;
 
     private float startX;
 
@@ -23,7 +33,28 @@ public class PlayerObstacleSpawner : MonoBehaviourPun
         if (photonView.IsMine)
         {
             startX = transform.position.x;
+            ConfigurarParametrosPorNivel();
             StartCoroutine(SpawnRoutine());
+        }
+    }
+
+    void ConfigurarParametrosPorNivel()
+    {
+        string escenaActual = SceneManager.GetActiveScene().name;
+
+        if (escenaActual.Contains("Volcan") || escenaActual.Contains("Lava"))
+        {
+            minSpawnTime = minSpawnLava;
+            maxSpawnTime = maxSpawnLava;
+            prefabsActuales = obstacleLavaPrefabs;
+            Debug.Log("[ObstacleSpawner] Configurado en modo LAVA/VOLCÁN");
+        }
+        else
+        {
+            minSpawnTime = minSpawnArbol;
+            maxSpawnTime = maxSpawnArbol;
+            prefabsActuales = obstacleArbolPrefabs;
+            Debug.Log("[ObstacleSpawner] Configurado en modo ÁRBOL");
         }
     }
 
@@ -47,7 +78,7 @@ public class PlayerObstacleSpawner : MonoBehaviourPun
                 float xPos = startX + laneOffsets[chosenLane];
                 Vector3 spawnPosition = new Vector3(xPos, transform.position.y + spawnHeightOffset, transform.position.z);
 
-                string randomPrefab = obstaclePrefabNames[Random.Range(0, obstaclePrefabNames.Length)];
+                string randomPrefab = prefabsActuales[Random.Range(0, prefabsActuales.Length)];
 
                 PhotonNetwork.Instantiate(randomPrefab, spawnPosition, Quaternion.identity);
             }

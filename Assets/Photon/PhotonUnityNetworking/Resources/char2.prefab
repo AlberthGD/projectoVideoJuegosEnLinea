@@ -104,6 +104,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3095513154407287482}
+  - component: {fileID: 3787651438324663634}
   m_Layer: 0
   m_Name: mixamorig:RightUpLeg
   m_TagString: Untagged
@@ -127,6 +128,27 @@ Transform:
   - {fileID: 1704851552214742048}
   m_Father: {fileID: 1184702950377618821}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &3787651438324663634
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1045051165716336241}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.11707036, y: 0.30007243, z: 0.1235311}
+  m_Center: {x: 0.014927865, y: 0.3001611, z: 0.0020388442}
 --- !u!1 &1220430425884813420
 GameObject:
   m_ObjectHideFlags: 0
@@ -234,6 +256,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1704851552214742048}
+  - component: {fileID: 5614330760494125578}
   m_Layer: 0
   m_Name: mixamorig:RightLeg
   m_TagString: Untagged
@@ -257,6 +280,27 @@ Transform:
   - {fileID: 6042480314852105350}
   m_Father: {fileID: 3095513154407287482}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &5614330760494125578
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1762350831578781618}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.09538315, y: 0.41300935, z: 0.08968833}
+  m_Center: {x: 0.002337284, y: 0.24041143, z: -0.02598065}
 --- !u!1 &1886263945164711749
 GameObject:
   m_ObjectHideFlags: 0
@@ -599,6 +643,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5405916777404865278}
+  - component: {fileID: 5062799659126280361}
   m_Layer: 0
   m_Name: mixamorig:Spine1
   m_TagString: Untagged
@@ -622,6 +667,27 @@ Transform:
   - {fileID: 6827150132585310869}
   m_Father: {fileID: 1447925806005685782}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &5062799659126280361
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2774714166665582333}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.22470607, y: 0.40946057, z: 0.1649433}
+  m_Center: {x: 0.005328454, y: 0.027898446, z: 0.020811068}
 --- !u!1 &2794051504786993348
 GameObject:
   m_ObjectHideFlags: 0
@@ -1011,6 +1077,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 742013349731372946}
+  - component: {fileID: 3066170037235839817}
   m_Layer: 0
   m_Name: mixamorig:Head
   m_TagString: Untagged
@@ -1034,6 +1101,27 @@ Transform:
   - {fileID: 2528038999366110076}
   m_Father: {fileID: 127920517169981160}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &3066170037235839817
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4390265420232341918}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.15534171
+  m_Center: {x: -4.0668332e-12, y: 0.117136985, z: -0.012609392}
 --- !u!1 &4438957020514656090
 GameObject:
   m_ObjectHideFlags: 0
@@ -1171,6 +1259,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 154986639606893140}
+  - component: {fileID: 8128396145125829113}
   m_Layer: 0
   m_Name: mixamorig:LeftToeBase
   m_TagString: Untagged
@@ -1194,6 +1283,27 @@ Transform:
   - {fileID: 7184248591659143042}
   m_Father: {fileID: 8877319455503295691}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8128396145125829113
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5278064798378822935}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.08127957, y: 0.18270804, z: 0.047055982}
+  m_Center: {x: 0.0038165164, y: -0.046625808, z: 0.01839618}
 --- !u!1 &5426540919100987342
 GameObject:
   m_ObjectHideFlags: 0
@@ -1300,6 +1410,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1184702950377618821}
+  - component: {fileID: 5880897034611772780}
   m_Layer: 0
   m_Name: mixamorig:Hips
   m_TagString: Untagged
@@ -1325,6 +1436,27 @@ Transform:
   - {fileID: 1447925806005685782}
   m_Father: {fileID: 6638512295902387473}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &5880897034611772780
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6102098369533093104}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.3199969, y: 0.24457958, z: 0.19987601}
+  m_Center: {x: -0.0041141664, y: -0.13843653, z: 0.0061437935}
 --- !u!1 &6180183636941624207
 GameObject:
   m_ObjectHideFlags: 0
@@ -1365,7 +1497,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6638512295902387473}
-  - component: {fileID: 2327167844663774029}
   m_Layer: 0
   m_Name: char2
   m_TagString: Untagged
@@ -1390,29 +1521,6 @@ Transform:
   - {fileID: 1184702950377618821}
   m_Father: {fileID: 4631996151799173378}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &2327167844663774029
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6299246625489635243}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.18801768
-  m_Height: 1.7366725
-  m_Direction: 1
-  m_Center: {x: -0.0063601285, y: 0.85733455, z: -0.018869057}
 --- !u!1 &6464108866823469244
 GameObject:
   m_ObjectHideFlags: 0
@@ -1699,15 +1807,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efbc0f403e5c649cc9cf0ee84bc0f37f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerObstacleSpawner
-  obstaclePrefabNames:
-  - Obs1
+  obstacleArbolPrefabs:
+  - ObstaculoFall
+  obstacleLavaPrefabs:
+  - EnemigoFall
   laneOffsets:
   - -2
   - 0
   - 2
   spawnHeightOffset: 15
-  minSpawnTime: 1
-  maxSpawnTime: 2.5
+  minSpawnArbol: 2.5
+  maxSpawnArbol: 4
+  minSpawnLava: 1.8
+  maxSpawnLava: 2.5
 --- !u!114 &3249777775433041387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1720,15 +1832,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74781a1241e0a4223aaa8983def99ebd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerLateralSpawner
-  flyingEnemyPrefabs:
-  - Enem1
+  prefabsArbolEnemigosFly:
+  - EnemigoLateral
+  prefabsLavaEnemigosFly:
+  - EnemigoVolcanLateral
   laneYOffsets:
   - 1
   - 3
   - 5
   spawnXDistance: 4
-  minSpawnTime: 1
-  maxSpawnTime: 2
+  minSpawnArbol: 3
+  maxSpawnArbol: 4.5
+  minSpawnLava: 2
+  maxSpawnLava: 3.5
 --- !u!114 &6820152169861067956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1819,17 +1935,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efbc0f403e5c649cc9cf0ee84bc0f37f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerObstacleSpawner
-  obstaclePrefabNames:
-  - projectile
+  obstacleArbolPrefabs:
   - PowerUpShield
   - PowerUpx2Multi
+  - projectile
+  obstacleLavaPrefabs:
+  - PowerUpShield
+  - PowerUpx2Multi
+  - projectile
   laneOffsets:
   - -2
   - 0
   - 2
   spawnHeightOffset: 15
-  minSpawnTime: 5
-  maxSpawnTime: 8
+  minSpawnArbol: 6.5
+  maxSpawnArbol: 8
+  minSpawnLava: 6.5
+  maxSpawnLava: 8
 --- !u!95 &6580347688242493423
 Animator:
   serializedVersion: 7
@@ -2109,6 +2231,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8346224544861482066}
+  - component: {fileID: 4557963126087485104}
   m_Layer: 0
   m_Name: mixamorig:RightToeBase
   m_TagString: Untagged
@@ -2132,6 +2255,27 @@ Transform:
   - {fileID: 3751052815254752496}
   m_Father: {fileID: 6042480314852105350}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &4557963126087485104
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7600780859842337389}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.07124205, y: 0.18969165, z: 0.04791522}
+  m_Center: {x: -0.0065459693, y: -0.049052354, z: 0.022344338}
 --- !u!1 &7603150741724121331
 GameObject:
   m_ObjectHideFlags: 0
@@ -2488,6 +2632,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8659976051845907705}
+  - component: {fileID: 231931773857102539}
   m_Layer: 0
   m_Name: mixamorig:LeftUpLeg
   m_TagString: Untagged
@@ -2511,6 +2656,27 @@ Transform:
   - {fileID: 4077059736677047335}
   m_Father: {fileID: 1184702950377618821}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &231931773857102539
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8083685632280260823}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.11652306, y: 0.28241646, z: 0.13082358}
+  m_Center: {x: 0.003449728, y: 0.31730714, z: 0.01368352}
 --- !u!1 &8095454526687499710
 GameObject:
   m_ObjectHideFlags: 0
@@ -2584,6 +2750,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4077059736677047335}
+  - component: {fileID: 6196927912715242850}
   m_Layer: 0
   m_Name: mixamorig:LeftLeg
   m_TagString: Untagged
@@ -2607,6 +2774,27 @@ Transform:
   - {fileID: 8877319455503295691}
   m_Father: {fileID: 8659976051845907705}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &6196927912715242850
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8212185858005465338}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.09611427, y: 0.41241768, z: 0.09920377}
+  m_Center: {x: -0.00005753263, y: 0.24834648, z: -0.0097316215}
 --- !u!1 &8273194430106202147
 GameObject:
   m_ObjectHideFlags: 0
